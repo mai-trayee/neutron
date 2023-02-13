@@ -17,5 +17,22 @@ df = df.sort_values(
 		ascending=[True, False]
 		)
 
+
+dict = {11 : 'e-',	-11 : 'e+',
+	13 : 'mu-',	-13 : 'mu+',
+	15 : 'tau-',	-15 : 'tau+', 
+	22 : 'gamma',
+	12 : 'nu_e',	-12 : 'anti-nu_e',
+	14 : 'nu_mu',   -14 : 'anti-nu_mu',
+	16 : 'nu_tau',  -16 : 'anti-nu_tau',
+	2112: 'n',
+	2212: 'p+',    -2212: 'p-',
+	111: 'pi0',
+	211: 'pi+',     -211: 'pi-',
+	221: 'eta',
+	311: 'K0',
+	321: 'K+',	-321: 'K-'}
+df=df.replace({'iprntprt': dict})
+df=df.replace({'iprtscnd': dict})
 # display DataFrame
 print(df.to_markdown())
