@@ -17,8 +17,7 @@ df = df.sort_values(
 		ascending=[True, False]
 		)
 
-
-dict = {11 : 'e-',	-11 : 'e+',
+dict_particle = {11 : 'e-',	-11 : 'e+',
 	13 : 'mu-',	-13 : 'mu+',
 	15 : 'tau-',	-15 : 'tau+', 
 	22 : 'gamma',
@@ -32,7 +31,26 @@ dict = {11 : 'e-',	-11 : 'e+',
 	221: 'eta',
 	311: 'K0',
 	321: 'K+',	-321: 'K-'}
-df=df.replace({'iprntprt': dict})
-df=df.replace({'iprtscnd': dict})
+
+dict_process = { 1: 'boundary',
+		 5: 'decay',
+		18: 'ncapture',
+		 6: 'pair production',
+		20: 'hadronic inelastic'}
+
+
+df=df.replace({'iprntprt': dict_particle})
+df=df.replace({'iprtscnd': dict_particle})
+df=df.replace({'iorgprt': dict_particle})
+
+df=df.replace({'lmecscnd': dict_process})
+
+print('Look for value:')
+choice = [input()]
+print('in column:')
+df = df[df[input()].isin(choice)]
+
+
+
 # display DataFrame
 print(df.to_markdown())
