@@ -4,13 +4,13 @@
 import pandas as pd
   
 # read text file into pandas DataFrame
-column_names = ('rows', 'nscndprt','iprntprt','iprtscnd','lmecscnd','iorgprt','tscnd','pscnd') 
+column_names = ('rows', 'nscndprt','iprntprt','iprtscnd','lmecscnd','iorgprt','tscnd','pscnd','pprnt','pprntinit') 
 df = pd.read_table("event.txt", 
 			sep="*", engine='python', 
 			skiprows=2,
 			header=None) 
 			#names=column_names)
-df = df.drop(columns=[0, 1, 10, 11])  
+df = df.drop(columns=[0, 1, 12])  
 df.columns = column_names 
 df = df.sort_values(
 		by=['tscnd', 'pscnd'],
@@ -49,7 +49,6 @@ print('Look for value:')
 choice = [input()]
 print('in column:')
 df = df[df[input()].isin(choice)]
-
 
 
 # display DataFrame
